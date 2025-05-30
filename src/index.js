@@ -13,8 +13,6 @@ import './AdminBlog.css';
 import './AdminLogin.css';
 import './View.css';
 
-export const BaseUrl="https://enthusia-prince-be.vercel.app";
-
 // Protected route component
 const ProtectedRoute = ({ children }) => {
   const token = localStorage.getItem('admin_token');
