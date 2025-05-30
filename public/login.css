@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+html, body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: #f0f2f5;
+  background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.wrapper {
+  width: 400px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  transform: translateY(-10px);
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  text-align: center;
+  padding: 30px 0;
+  color: #1e2a4a;
+  background-color: white;
+  border-bottom: 1px solid #eaeaea;
+  letter-spacing: -0.5px;
+}
+
+form {
+  padding: 30px;
+}
+
+.field {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.field input {
+  width: 100%;
+  height: 56px;
+  padding: 0 16px;
+  border: 2px solid #e1e4e8;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s;
+  background-color: white;
+  color: #333;
+}
+
+.field input:focus {
+  border-color: #4361ee;
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.15);
+  outline: none;
+}
+
+.field label {
+  position: absolute;
+  top: 18px;
+  left: 16px;
+  color: #6e7c91;
+  pointer-events: none;
+  transition: all 0.25s ease;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.field input:focus ~ label,
+.field input:valid ~ label {
+  top: -12px;
+  left: 12px;
+  font-size: 12px;
+  background: white;
+  padding: 0 6px;
+  color: #4361ee;
+  font-weight: 600;
+}
+
+.field input[type="submit"] {
+  background-color: #4361ee;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  box-shadow: 0 4px 12px rgba(67, 97, 238, 0.2);
+  transition: all 0.3s;
+}
+
+.field input[type="submit"]:hover {
+  background-color: #3a56d4;
+  box-shadow: 0 6px 16px rgba(67, 97, 238, 0.3);
+  transform: translateY(-2px);
+}
+
+.field input[type="submit"]:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(67, 97, 238, 0.2);
+}
+
+.field input[type="submit"]:disabled {
+  background-color: #a0aec0;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.error-message {
+  color: #e53e3e;
+  text-align: center;
+  margin-top: 16px;
+  font-size: 14px;
+  background-color: #fff5f5;
+  padding: 10px;
+  border-radius: 6px;
+  border-left: 3px solid #e53e3e;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
+
+.login-footer {
+  text-align: center;
+  margin-top: 20px;
+  color: #6e7c91;
+  font-size: 14px;
+}
+
+.login-footer a {
+  color: #4361ee;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.login-footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .wrapper {
+    width: 90%;
+    max-width: 360px;
+  }
+  
+  .title {
+    font-size: 24px;
+    padding: 24px 0;
+  }
+  
+  form {
+    padding: 20px;
+  }
+  
+  .field input {
+    height: 50px;
+  }
+}

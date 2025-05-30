@@ -1,0 +1,145 @@
+.blog-view-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-view-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #1e2a4a;
+  color: white;
+  border-bottom: 1px solid #e1e4e8;
+}
+
+.blog-view-tabs {
+  display: flex;
+  gap: 20px;
+}
+
+.tab {
+  padding: 10px 15px;
+  cursor: pointer;
+  position: relative;
+}
+
+.tab.active {
+  border-bottom: 3px solid white;
+  font-weight: bold;
+}
+
+.new-badge {
+  background-color: #4caf50;
+  color: white;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  margin-left: 5px;
+  text-transform: uppercase;
+}
+
+.blog-view-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.action-button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  border: 1px solid #ccc;
+}
+
+.action-button.primary {
+  background-color: #ff7a59;
+  color: white;
+  border: none;
+}
+
+.action-button.secondary {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+}
+
+.blog-view-content {
+  padding: 30px;
+  flex-grow: 1;
+  background-color: white;
+  margin: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.blog-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.blog-title h1 {
+  font-size: 42px;
+  color: #1e2a4a;
+  margin-bottom: 10px;
+}
+
+.blog-author {
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.social-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.blog-media {
+  margin: 30px 0;
+  text-align: center;
+  width: 100%;
+  max-height: 500px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.blog-media img {
+  width: 100%;
+  max-height: 500px;
+  object-fit: contain; /* Changed from cover to contain */
+  border-radius: 8px;
+}
+
+/* Add responsive styles */
+@media (max-width: 768px) {
+  .blog-media {
+    max-height: 300px;
+  }
+  
+  .blog-media img {
+    max-height: 300px;
+  }
+}
+
+.blog-description {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #333;
+}

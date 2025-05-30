@@ -1,0 +1,257 @@
+.blog-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.blog-container h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 32px;
+  color: #333;
+}
+
+.blog-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.blog-card {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: white;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.blog-image {
+  height: 220px;
+  overflow: hidden;
+  position: relative;
+  background-color: #f5f8fa;
+}
+
+.blog-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.blog-card:hover .blog-card-image {
+  transform: scale(1.05);
+}
+
+.placeholder-image {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f4f8;
+  color: #5c6a7f;
+  font-size: 14px;
+}
+
+.blog-content {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  position: relative;
+}
+
+.blog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.blog-content h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #1e2a4a;
+  flex: 1;
+  padding-right: 10px;
+}
+
+.like-button-top {
+  background: none;
+  border: none;
+  color: #ff5c35;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0;
+  margin-left: auto;
+}
+
+.blog-description {
+  color: #5c6a7f;
+  margin-bottom: 20px;
+  line-height: 1.5;
+  flex-grow: 1;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  height: 4.5em; /* Fixed height for 3 lines of text */
+}
+
+.blog-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.read-more {
+  padding: 8px 16px;
+  background-color: #1e2a4a;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.read-more:hover {
+  background-color: #15203a;
+}
+
+.like-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  color: #ff5c35;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.like-button i {
+  transition: transform 0.2s;
+}
+
+.like-button:hover i {
+  transform: scale(1.2);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .blog-image {
+    height: 180px;
+  }
+  
+  .blog-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Existing styles for loading, error, etc. */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+}
+
+.loading-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top: 4px solid #3498db;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error-container {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  margin: 40px auto;
+  max-width: 600px;
+}
+
+.error-container h2 {
+  color: #e74c3c;
+  margin-bottom: 15px;
+}
+
+.server-status {
+  margin: 20px 0;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.online {
+  color: #27ae60;
+  font-weight: bold;
+}
+
+.offline {
+  color: #e74c3c;
+  font-weight: bold;
+}
+
+.retry-button {
+  padding: 10px 25px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.retry-button:hover {
+  background-color: #2980b9;
+}
+
+.empty-container {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  margin: 40px auto;
+  max-width: 600px;
+}
+
+.empty-container h2 {
+  color: #3498db;
+  margin-bottom: 15px;
+}
+
+@media (max-width: 768px) {
+  .blog-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+

@@ -1,0 +1,97 @@
+.table-container {
+  padding: 20px;
+  width: 100%;
+  overflow-x: auto;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+  background-color: #2c3e50;
+  color: #fff;
+}
+
+thead th {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+tbody td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #ccc;
+  vertical-align: middle;
+}
+
+tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+}
+
+.Del-buton {
+  background-color: #e74c3c;
+}
+
+.Edit-buton {
+  background-color: #3498db;
+}
+
+.Add-buton {
+  background-color: #2ecc71;
+}
+
+/* Fix for table image thumbnails */
+.table-thumbnail {
+  width: 120px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid #e1e4e8;
+}
+
+.image-cell {
+  width: 140px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Override global img styles */
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Specific override for blog images */
+.blog-featured-image img,
+.blog-media img,
+.related-post-image img {
+  object-fit: contain;
+  max-height: 500px;
+}
+
+/* Responsive adjustments for table thumbnails */
+@media (max-width: 768px) {
+  .table-thumbnail {
+    width: 100px;
+    height: 75px;
+  }
+  
+  .image-cell {
+    width: 120px;
+  }
+}
