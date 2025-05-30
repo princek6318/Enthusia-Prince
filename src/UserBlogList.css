@@ -108,8 +108,7 @@
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-  height: 4.5em; /* Fixed height for 3 lines of text */
-}
+  height: 4.5em; 
 
 .blog-actions {
   display: flex;
@@ -151,7 +150,6 @@
   transform: scale(1.2);
 }
 
-/* Responsive styles */
 @media (max-width: 768px) {
   .blog-image {
     height: 180px;
@@ -162,7 +160,6 @@
   }
 }
 
-/* Existing styles for loading, error, etc. */
 .loading-container {
   display: flex;
   flex-direction: column;
@@ -252,6 +249,3 @@
     grid-template-columns: 1fr;
   }
 }
-
-
-

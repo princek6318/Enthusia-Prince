@@ -84,7 +84,6 @@
   font-size: 14px;
 }
 
-/* Responsive adjustments */
 @media (max-width: 480px) {
   .login-card {
     max-width: 90%;

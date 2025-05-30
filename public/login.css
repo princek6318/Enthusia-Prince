@@ -158,7 +158,6 @@ form {
   text-decoration: underline;
 }
 
-/* Responsive adjustments */
 @media (max-width: 480px) {
   .wrapper {
     width: 90%;

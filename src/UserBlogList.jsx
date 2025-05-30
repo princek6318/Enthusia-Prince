@@ -32,7 +32,6 @@ const UserBlogList = () => {
     try {
       const response = await axios.post(`https://enthusia-prince-be.vercel.app/api/blogs/${id}/like`);
       if (response.data.status === 'success') {
-        // Update the blogs state with the updated like count
         setBlogs(blogs.map(blog => 
           blog._id === id ? { ...blog, likes: response.data.data.likes } : blog
         ));
@@ -42,7 +41,6 @@ const UserBlogList = () => {
     }
   };
 
-  // Function to truncate text
   const truncateText = (text, maxLength = 150) => {
     if (!text) return "No description available";
     return text.length > maxLength ? text.substring(0, maxLength) + "..." : text;

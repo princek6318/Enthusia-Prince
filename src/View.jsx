@@ -9,11 +9,9 @@ const View = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  // Fetch all blog posts on load
   useEffect(() => {
     fetchData();
     
-    // Set page title
     document.title = 'Blog Management | Admin Dashboard';
   }, []);
 
@@ -22,7 +20,6 @@ const View = () => {
     
     if (!token) {
       console.error("No authentication token found");
-      // Redirect to login with the current location
       navigate('/login', { 
         state: { from: { pathname: '/view' } },
         replace: true 
@@ -47,7 +44,6 @@ const View = () => {
         setError("Failed to load blogs. Please try again.");
         setLoading(false);
         if (err.response?.status === 401) {
-          // Redirect to login if unauthorized with the current location
           navigate('/login', { 
             state: { from: { pathname: '/view' } },
             replace: true 
@@ -74,7 +70,7 @@ const View = () => {
         .then((res) => {
           if (res.data.status === "success") {
             alert("Blog deleted successfully");
-            fetchData(); // refresh blog list
+            fetchData(); 
           }
         })
         .catch((err) => {
@@ -92,7 +88,6 @@ const View = () => {
     navigate("/admin-blog");
   };
 
-  // Function to truncate text
   const truncateText = (text, maxLength = 100) => {
     if (!text) return "No description";
     return text.length > maxLength ? text.substring(0, maxLength) + "..." : text;

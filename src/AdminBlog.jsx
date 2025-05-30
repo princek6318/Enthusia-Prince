@@ -1,4 +1,3 @@
-// src/components/AdminBlogForm.jsx
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
@@ -19,7 +18,6 @@ const AdminBlogForm = () => {
   const API_BASE_URL = `${process.env.REACT_APP_BASE_API_URL}/api/blogs`;
 
   useEffect(() => {
-    // Check if we're in edit mode by looking for id in URL params
     const params = new URLSearchParams(location.search);
     const id = params.get('id');
     
@@ -77,7 +75,6 @@ const AdminBlogForm = () => {
       return;
     }
 
-    // Validate form
     if (!title.trim()) {
       setError('Title is required');
       return;
@@ -91,28 +88,23 @@ const AdminBlogForm = () => {
     try {
       setLoading(true);
       
-      // Create FormData object
       const formData = new FormData();
       formData.append('title', title);
       formData.append('description', description);
       
-      // Only append media file if it exists
       if (mediaFile) {
         formData.append('media', mediaFile);
       }
       
-      // Only append mediaUrl if it exists and no file is selected
       if (mediaUrl && !mediaFile) {
         formData.append('mediaUrl', mediaUrl);
       }
 
-      // Determine if we're creating or updating
       const method = blogId ? 'put' : 'post';
       const url = blogId ? `${API_BASE_URL}/${blogId}` : API_BASE_URL;
       
       console.log(`Submitting ${method.toUpperCase()} request to ${url}`);
       
-      // Make the API request
       const response = await axios({
         method,
         url,
@@ -125,15 +117,12 @@ const AdminBlogForm = () => {
       
       console.log('API Response:', response.data);
       
-      // Show success message
       alert(blogId ? 'Blog updated successfully!' : 'Blog created successfully!');
       
-      // Redirect to blog list
       navigate('/view');
     } catch (err) {
       console.error('Error saving blog:', err);
       
-      // Set appropriate error message
       if (err.response) {
         setError(`Server error: ${err.response.data.message || err.response.statusText}`);
       } else if (err.request) {

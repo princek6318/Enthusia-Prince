@@ -5,7 +5,6 @@
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-/* Header */
 .blog-editor-header {
   display: flex;
   justify-content: space-between;
@@ -48,7 +47,6 @@
   border: 1px solid white;
 }
 
-/* Tabs */
 .blog-editor-tabs {
   display: flex;
   background-color: white;
@@ -95,7 +93,6 @@
   font-weight: 600;
 }
 
-/* Distraction Free Mode */
 .distraction-free-mode {
   display: flex;
   align-items: center;
@@ -135,7 +132,6 @@
   cursor: pointer;
 }
 
-/* Blog Navigation */
 .blog-navigation {
   display: flex;
   justify-content: space-between;
@@ -167,7 +163,6 @@
   cursor: pointer;
 }
 
-/* Blog Editor Main */
 .blog-editor-main {
   display: flex;
   height: calc(100vh - 200px);
@@ -205,7 +200,6 @@
   margin-right: 10px;
 }
 
-/* Blog Content Area */
 .blog-content-area {
   flex: 1;
   padding: 30px;
@@ -280,7 +274,7 @@
 .blog-featured-image img {
   width: 100%;
   max-height: 500px;
-  object-fit: contain; /* Changed from cover to contain */
+  object-fit: contain; 
   border-radius: 8px;
 }
 
@@ -378,32 +372,30 @@
   text-align: center;
 }
 
-/* Platform-specific colors */
 .share-option:nth-child(1) i {
-  color: #25D366; /* WhatsApp */
+  color: #25D366; 
 }
 
 .share-option:nth-child(2) i {
-  color: #E1306C; /* Instagram */
+  color: #E1306C; 
 }
 
 .share-option:nth-child(3) i {
-  color: #1877F2; /* Facebook */
+  color: #1877F2; 
 }
 
 .share-option:nth-child(4) i {
-  color: #1DA1F2; /* Twitter */
+  color: #1DA1F2; 
 }
 
 .share-option:nth-child(5) i {
-  color: #6c757d; /* Copy link */
+  color: #6c757d; 
 }
 
 .share-option:nth-child(6) i {
-  color: #5c6a7f; /* More options */
+  color: #5c6a7f;
 }
 
-/* Related Posts */
 .related-posts {
   margin-top: 40px;
 }
@@ -462,7 +454,6 @@
   font-weight: 500;
 }
 
-/* Loading and Error States */
 .blog-loading, .blog-error {
   display: flex;
   flex-direction: column;
@@ -487,7 +478,6 @@
   100% { transform: rotate(360deg); }
 }
 
-/* Comment Section Styles */
 .comment-section {
   margin-top: 50px;
   padding-top: 30px;
@@ -645,7 +635,6 @@
   margin: 0;
 }
 
-/* Floating share button */
 .floating-share-button {
   position: fixed;
   bottom: 30px;
@@ -693,7 +682,6 @@
   }
 }
 
-/* Override global img styles that might be affecting our images */
 img {
   max-width: 100%;
   height: auto;

@@ -21,17 +21,13 @@ const UserBlogView = () => {
   const [commentError, setCommentError] = useState('');
   const commentSectionRef = useRef(null);
   
-  // Add state for share URL and share dialog
   const [shareUrl, setShareUrl] = useState('');
   const [showShareOptions, setShowShareOptions] = useState(false);
   const shareOptionsRef = useRef(null);
   
-  // Move all useEffect hooks to the top level, before any conditional returns
   useEffect(() => {
-    // Set the share URL when the component mounts
     setShareUrl(window.location.href);
     
-    // Add click outside listener to close share options
     const handleClickOutside = (event) => {
       if (shareOptionsRef.current && !shareOptionsRef.current.contains(event.target)) {
         setShowShareOptions(false);
@@ -53,16 +49,13 @@ const UserBlogView = () => {
         if (response.data && response.data.data) {
           setBlog(response.data.data);
           
-          // Fetch comments
           const commentsResponse = await axios.get(`https://enthusia-prince-be.vercel.app/api/blogs/${id}/comments`);
           if (commentsResponse.data && commentsResponse.data.data) {
             setComments(commentsResponse.data.data.comments);
           }
           
-          // Fetch related blogs
           const relatedResponse = await axios.get('https://enthusia-prince-be.vercel.app/api/blogs');
           if (relatedResponse.data && relatedResponse.data.data) {
-            // Filter out current blog and limit to 3 related blogs
             const filtered = relatedResponse.data.data
               .filter(b => b._id !== id)
               .slice(0, 3);
@@ -82,11 +75,8 @@ const UserBlogView = () => {
     fetchBlog();
   }, [id]);
 
-  // Add the meta tags update effect at the top level
   useEffect(() => {
-    // Update meta tags for better social sharing when blog data is loaded
     if (blog) {
-      // Create or update meta tags
       const updateMetaTag = (name, content) => {
         let meta = document.querySelector(`meta[name="${name}"]`);
         if (!meta) {
@@ -97,35 +87,29 @@ const UserBlogView = () => {
         meta.setAttribute('content', content);
       };
       
-      // Update Open Graph meta tags
       updateMetaTag('og:title', blog.title);
       updateMetaTag('og:description', blog.description.substring(0, 150) + '...');
       updateMetaTag('og:url', window.location.href);
       
-      // Set image if available
       if (blog.mediaPath) {
         updateMetaTag('og:image', `https://enthusia-prince-be.vercel.app/${blog.mediaPath}`);
       } else if (blog.mediaUrl) {
         updateMetaTag('og:image', blog.mediaUrl);
       }
       
-      // Update Twitter Card meta tags
       updateMetaTag('twitter:card', 'summary_large_image');
       updateMetaTag('twitter:title', blog.title);
       updateMetaTag('twitter:description', blog.description.substring(0, 150) + '...');
       
-      // Set Twitter image if available
       if (blog.mediaPath) {
         updateMetaTag('twitter:image', `https://enthusia-prince-be.vercel.app/${blog.mediaPath}`);
       } else if (blog.mediaUrl) {
         updateMetaTag('twitter:image', blog.mediaUrl);
       }
       
-      // Update document title
       document.title = `${blog.title} | Your Blog Name`;
     }
     
-    // Cleanup function to remove meta tags when component unmounts
     return () => {
       document.title = 'Your Blog Name';
     };
@@ -161,7 +145,6 @@ const UserBlogView = () => {
     e.preventDefault();
     setCommentError('');
     
-    // Simple validation
     if (!newComment.name || !newComment.email || !newComment.content) {
       setCommentError('All fields are required');
       return;
@@ -174,17 +157,14 @@ const UserBlogView = () => {
       );
       
       if (response.data.status === 'success') {
-        // Add the new comment to the comments array
         setComments([...comments, response.data.data.comment]);
         
-        // Clear the form
         setNewComment({
           name: '',
           email: '',
           content: ''
         });
         
-        // Scroll to the new comment
         if (commentSectionRef.current) {
           commentSectionRef.current.scrollIntoView({ behavior: 'smooth' });
         }
@@ -195,12 +175,10 @@ const UserBlogView = () => {
     }
   };
 
-  // Handle share button click
   const handleShareClick = () => {
     setShowShareOptions(!showShareOptions);
   };
   
-  // Web Share API function
   const shareViaWebAPI = async () => {
     if (navigator.share) {
       try {
@@ -214,12 +192,10 @@ const UserBlogView = () => {
         console.error('Error sharing:', err);
       }
     } else {
-      // Fallback - show the share options dropdown
       setShowShareOptions(true);
     }
   };
   
-  // Share on specific platforms
   const shareOnWhatsApp = () => {
     const encodedText = encodeURIComponent(`${blog.title} - ${shareUrl}`);
     window.open(`https://wa.me/?text=${encodedText}`, '_blank');
@@ -227,8 +203,7 @@ const UserBlogView = () => {
   };
   
   const shareOnInstagram = () => {
-    // Instagram doesn't have a direct share URL, so we'll copy to clipboard
-    // and show instructions
+  
     navigator.clipboard.writeText(shareUrl)
       .then(() => {
         alert('URL copied to clipboard. Open Instagram and paste in your story or direct message.');
@@ -261,13 +236,11 @@ const UserBlogView = () => {
     setShowShareOptions(false);
   };
 
-  // Format date for comments
   const formatDate = (dateString) => {
     const options = { year: 'numeric', month: 'long', day: 'numeric' };
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
-  // Now we can have conditional returns after all hooks are defined
   if (loading) {
     return (
       <div className="blog-loading">
@@ -426,13 +399,11 @@ const UserBlogView = () => {
               </div>
             </div>
             
-            {/* Comment Section */}
             <div className="comment-section" ref={commentSectionRef}>
               <h3 className="comment-heading">
                 <i className="fas fa-comments"></i> Comments ({comments.length})
               </h3>
               
-              {/* Comment Form */}
               <div className="comment-form-container">
                 <h4>Leave a Comment</h4>
                 {commentError && <div className="comment-error">{commentError}</div>}
@@ -478,7 +449,6 @@ const UserBlogView = () => {
                 </form>
               </div>
               
-              {/* Comments List */}
               <div className="comments-list">
                 {comments.length === 0 ? (
                   <div className="no-comments">
