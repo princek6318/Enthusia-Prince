@@ -32,7 +32,7 @@ const View = () => {
 
     setLoading(true);
     axios
-      .get("http://localhost:5000/api/blogs", {
+      .get(`${process.env.REACT_APP_BASE_API_URL}/api/blogs`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -66,7 +66,7 @@ const View = () => {
       const token = localStorage.getItem("admin_token");
 
       axios
-        .delete(`http://localhost:5000/api/blogs/${id}`, {
+        .delete(`https://enthusia-prince-be.vercel.app/api/blogs/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -156,7 +156,7 @@ const View = () => {
                   <td className="image-cell">
                     {blog.mediaPath ? (
                       <img
-                        src={`http://localhost:5000/${blog.mediaPath}`}
+                        src={`https://enthusia-prince-be.vercel.app/${blog.mediaPath}`}
                         alt="Blog media"
                         className="table-thumbnail"
                         onClick={() => navigate(`/blog-view/${blog._id}`)}

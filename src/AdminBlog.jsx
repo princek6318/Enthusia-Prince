@@ -16,7 +16,7 @@ const AdminBlogForm = () => {
   const navigate = useNavigate();
   const location = useLocation();
   
-  const API_BASE_URL = 'http://localhost:5000/api/blogs';
+  const API_BASE_URL = `${process.env.REACT_APP_BASE_API_URL}/api/blogs`;
 
   useEffect(() => {
     // Check if we're in edit mode by looking for id in URL params

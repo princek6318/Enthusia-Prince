@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AdminLogin.css';
+import { BaseUrl } from '.';
 
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
@@ -15,7 +16,7 @@ const AdminLogin = () => {
     setLoading(true);
     
     try {
-      const response = await fetch('http://127.0.0.1:5000/admin/login', {
+      const response = await fetch(`${process.env.REACT_APP_BASE_API_URL}/admin/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

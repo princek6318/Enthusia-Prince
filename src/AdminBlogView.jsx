@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './AdminBlogView.css';
+import { BaseUrl } from '.';
 
 const AdminBlogView = () => {
   const [blog, setBlog] = useState(null);
@@ -22,7 +23,7 @@ const AdminBlogView = () => {
 
     try {
       setLoading(true);
-      const response = await axios.get(`http://localhost:5000/api/blogs/${id}`, {
+      const response = await axios.get(`${process.env.REACT_APP_BASE_API_URL}/api/blogs/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -85,7 +86,7 @@ const AdminBlogView = () => {
         <div className="blog-media">
           {blog.mediaPath ? (
             <img 
-              src={`http://localhost:5000/${blog.mediaPath}`} 
+              src={`https://enthusia-prince-be.vercel.app/${blog.mediaPath}`} 
               alt={blog.title} 
             />
           ) : blog.mediaUrl ? (

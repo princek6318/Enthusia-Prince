@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './UserBlogView.css';
+import { BaseUrl } from '.';
 
 const UserBlogView = () => {
   const { id } = useParams();
@@ -47,19 +48,19 @@ const UserBlogView = () => {
     const fetchBlog = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`http://localhost:5000/api/blogs/${id}`);
+        const response = await axios.get(`${process.env.REACT_APP_BASE_API_URL}/api/blogs/${id}`);
         
         if (response.data && response.data.data) {
           setBlog(response.data.data);
           
           // Fetch comments
-          const commentsResponse = await axios.get(`http://localhost:5000/api/blogs/${id}/comments`);
+          const commentsResponse = await axios.get(`https://enthusia-prince-be.vercel.app/api/blogs/${id}/comments`);
           if (commentsResponse.data && commentsResponse.data.data) {
             setComments(commentsResponse.data.data.comments);
           }
           
           // Fetch related blogs
-          const relatedResponse = await axios.get('http://localhost:5000/api/blogs');
+          const relatedResponse = await axios.get('https://enthusia-prince-be.vercel.app/api/blogs');
           if (relatedResponse.data && relatedResponse.data.data) {
             // Filter out current blog and limit to 3 related blogs
             const filtered = relatedResponse.data.data
@@ -103,7 +104,7 @@ const UserBlogView = () => {
       
       // Set image if available
       if (blog.mediaPath) {
-        updateMetaTag('og:image', `http://localhost:5000/${blog.mediaPath}`);
+        updateMetaTag('og:image', `https://enthusia-prince-be.vercel.app/${blog.mediaPath}`);
       } else if (blog.mediaUrl) {
         updateMetaTag('og:image', blog.mediaUrl);
       }
@@ -115,7 +116,7 @@ const UserBlogView = () => {
       
       // Set Twitter image if available
       if (blog.mediaPath) {
-        updateMetaTag('twitter:image', `http://localhost:5000/${blog.mediaPath}`);
+        updateMetaTag('twitter:image', `https://enthusia-prince-be.vercel.app/${blog.mediaPath}`);
       } else if (blog.mediaUrl) {
         updateMetaTag('twitter:image', blog.mediaUrl);
       }
@@ -136,7 +137,7 @@ const UserBlogView = () => {
 
   const handleLike = async () => {
     try {
-      const response = await axios.post(`http://localhost:5000/api/blogs/${id}/like`);
+      const response = await axios.post(`https://enthusia-prince-be.vercel.app/api/blogs/${id}/like`);
       if (response.data.status === 'success') {
         setBlog({
           ...blog,
@@ -168,7 +169,7 @@ const UserBlogView = () => {
     
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/blogs/${id}/comments`,
+        `https://enthusia-prince-be.vercel.app/api/blogs/${id}/comments`,
         newComment
       );
       
@@ -368,7 +369,7 @@ const UserBlogView = () => {
             <div className="blog-featured-image">
               {blog.mediaPath ? (
                 <img 
-                  src={`http://localhost:5000/${blog.mediaPath}`} 
+                  src={`https://enthusia-prince-be.vercel.app/${blog.mediaPath}`} 
                   alt={blog.title} 
                 />
               ) : blog.mediaUrl ? (
@@ -516,7 +517,7 @@ const UserBlogView = () => {
                     <div className="related-post-image">
                       {relatedBlog.mediaPath ? (
                         <img 
-                          src={`http://localhost:5000/${relatedBlog.mediaPath}`} 
+                          src={`https://enthusia-prince-be.vercel.app/${relatedBlog.mediaPath}`} 
                           alt={relatedBlog.title} 
                         />
                       ) : relatedBlog.mediaUrl ? (

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './UserBlogList.css';
+import { BaseUrl } from '.';
 
 const UserBlogList = () => {
   const [blogs, setBlogs] = useState([]);
@@ -12,7 +13,7 @@ const UserBlogList = () => {
     const fetchBlogs = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('http://localhost:5000/api/blogs');
+        const response = await axios.get(`${process.env.REACT_APP_BASE_API_URL}/api/blogs`);
         if (response.data && response.data.data) {
           setBlogs(response.data.data);
         }
@@ -29,7 +30,7 @@ const UserBlogList = () => {
 
   const handleLike = async (id) => {
     try {
-      const response = await axios.post(`http://localhost:5000/api/blogs/${id}/like`);
+      const response = await axios.post(`https://enthusia-prince-be.vercel.app/api/blogs/${id}/like`);
       if (response.data.status === 'success') {
         // Update the blogs state with the updated like count
         setBlogs(blogs.map(blog => 
@@ -84,7 +85,7 @@ const UserBlogList = () => {
             <div className="blog-image">
               {blog.mediaPath ? (
                 <img
-                  src={`http://localhost:5000/${blog.mediaPath}`}
+                  src={`https://enthusia-prince-be.vercel.app/${blog.mediaPath}`}
                   alt={blog.title}
                   className="blog-card-image"
                 />
