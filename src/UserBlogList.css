@@ -109,6 +109,7 @@
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   height: 4.5em; 
+}
 
 .blog-actions {
   display: flex;
