@@ -155,7 +155,7 @@
   .blog-image {
     height: 180px;
   }
-  
+
   .blog-list {
     grid-template-columns: 1fr;
   }
@@ -243,10 +243,4 @@
 .empty-container h2 {
   color: #3498db;
   margin-bottom: 15px;
-}
-
-@media (max-width: 768px) {
-  .blog-list {
-    grid-template-columns: 1fr;
-  }
 }
